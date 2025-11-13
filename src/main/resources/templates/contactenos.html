@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="d-flex justify-content-center align-items-center container-fluid bg-white py-4"
+		style="min-height: 100vh !important;">
+		<div class="container text-center">
+			<h1 class="py-sm-4 font-weight-light">CONTÁCTENOS</h1>
+			<form th:action="@{/sendMail}" method="POST">
+				<div class="input-group input-group-lg">
+					<input type="text" class="form-control me-3 mb-3 mr-2 form-control-lg" name="nombre"
+						placeholder="Nombre" required>
+					<input type="text" class="form-control ms-3 mb-3 ml-2 form-control-lg" name="apellido"
+						placeholder="Apellido" required>
+				</div>
+				<div class="input-group input-group-lg">
+					<input type="text" class="form-control me-3 mb-3 mr-2 form-control-lg" name="telefono"
+						placeholder=" Teléfono" required>
+					<input type="email" class="form-control ms-3 mb-3 ml-2 form-control-lg" name="correo"
+						placeholder="@Email" required>
+				</div>
+				<textarea class="form-control" rows="6" name="mensaje" placeholder="Escribe aquí tu mensaje" required></textarea>
+				<input type="submit" class="btn btn-dark my-4 btn-lg py-3 text-uppercase" value="Enviar">
+			</form>
+		</div>
+	</div>
+
+	<div th:replace="layout/layout :: scripts"></div>
+</body>
+
+</html>

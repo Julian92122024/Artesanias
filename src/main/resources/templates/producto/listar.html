@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	<main>
+
+		<section class="py-5 text-center container">
+			<div class="row py-lg-5">
+				<div class="col-lg-8 col-md-8 mx-auto">
+					<h1 class="display-4 fw-bold fst-italic">ARTESANÍAS</h1>
+					<p class="lead text-muted">Conozca todos nuestros productos, los cuales se encuentran a su
+						disposición en nuestra sede presencial en curití. Artesanias creadas con la mayor calidad del
+						mervado, hechas 100% por artesanos Colombianos garantizando así, la mejor artesanía posible para
+						nuestros clientes.</p>
+				</div>
+			</div>
+		</section>
+
+		<div class="album py-5 bg-light">
+			<div class="container">
+				<form th:replace="layout/layout :: buscador"></form>
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+					<div class="col mt-5" th:each="producto: ${productos}">
+						<div class="card shadow-sm">
+							<img th:if="${producto.foto != null}" th:src="@{'/uploads/' + ${producto.foto}}"
+								th:alt="${producto.foto}" class="card-img-top" width="100%" height="525">
+
+							<div class="card-body">
+								<ul class="list-group">
+									<li class="list-group-item active text-break" th:text="${producto.nombre}"></li>
+								</ul>
+								<div class="container mt-4">
+									<p class="card-text text-break" th:text="${producto.descripcion}"></p>
+								</div>
+								<div class="d-flex flex-row-reverse bd-highlight">
+									<small class="text-muted text-break" th:text="${producto.precio}+' $'"></small>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+	<nav th:replace="paginator-nav :: paginator"></nav>
+
+	<div th:replace="layout/layout :: goup"></div>
+	<div th:replace="layout/layout :: footer"></div>
+	<div th:replace="layout/layout :: scripts"></div>
+</body>
+
+</html>

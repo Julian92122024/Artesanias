@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layoutAdmin :: head"></head>
+
+<body>
+	<header th:replace="layout/layoutAdmin :: header"></header>
+
+	<div class="px-4 py-5 my-5 text-center">
+		<img class="d-block mx-auto mb-4" src="/img/logo.png" alt="" width="292" height="140">
+		<h1 th:if="${session.usuario != null}" class="display-5 fw-bold">Bienvenid@ <span class="display-5 fw-bold"
+				th:text="${session.usuario.username}"></span></h1>
+		<div class="col-lg-6 mx-auto">
+			<p class="lead mb-4">Interfaz administrativa de la plataforma web de Julio Cesar Artesanias, acá podras
+				gestionar los productos y artesanos que se muestran en la pagina principal de la web, además, podrás
+				gestionar los usuarios que podrán ingresar a está interfaz administrativa.</p>
+		</div>
+	</div>
+
+	<div class="container mt-4 col-sm-10 col-md-8 col-lg-12 col-xl-12">
+
+		<div class="row mt-2">
+
+			<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
+				<div class="card border border-danger mb-2 mt-2">
+					<div class="list-group">
+						<span class="list-group-item list-group-item-danger text-center fw-bold" aria-current="true">
+							PRODUCTOS
+						</span>
+					</div>
+					<div class="card-body">
+						<div class="containerImage">
+							<img src="/img/Ar2Big.png" alt="Avatar" class="imageFade"
+								style="height: 400px; width: 100%;">
+							<div class="middleImage">
+								<a th:href="@{/admin/listarProducto}" class="btn btn-success textImage"><i
+										class="bi bi-pencil-square"></i>
+									ADMINISTRAR</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
+				<div class="card border border-danger mb-2 mt-2">
+					<div class="list-group">
+						<span class="list-group-item list-group-item-danger text-center fw-bold" aria-current="true">
+							ARTESANOS
+						</span>
+					</div>
+					<div class="card-body">
+						<div class="containerImage">
+							<img src="/img/artesanos.jpg" alt="Avatar" class="imageFade"
+								style="height: 400px; width: 100%;">
+							<div class="middleImage">
+								<a th:href="@{/admin/listarArtesano}" class="btn btn-success textImage"><i
+										class="bi bi-pencil-square"></i>
+									ADMINISTRAR</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
+				<div class="card border border-danger mb-2 mt-2">
+					<div class="list-group">
+						<span class="list-group-item list-group-item-danger text-center fw-bold" aria-current="true">
+							USUARIOS
+						</span>
+					</div>
+					<div class="card-body">
+						<div class="containerImage">
+								<i class="bi bi-people-fill imageFade text-center" style="font-size: 266px;"></i>
+							<div class="middleImage">
+								<a th:href="@{/admin/listarUsuario}" class="btn btn-success textImage"><i
+										class="bi bi-pencil-square"></i>
+									ADMINISTRAR</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<div th:replace="layout/layoutAdmin :: footer"></div>
+	<div th:replace="layout/layoutAdmin :: scripts"></div>
+</body>
+
+</html>

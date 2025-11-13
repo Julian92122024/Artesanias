@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<title th:text="${titulo}"></title>
+	<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
+	<link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Material+Icons+Outlined' rel='stylesheet'>
+	<link rel="stylesheet" th:href="@{/css/imageFade.css}" />
+</head>
+
+<body th:fragment="body">
+
+	<header class="header" id="header" th:fragment="header">
+
+		<nav class="navbar navbar-expand-lg bg-dark navbar-dark p-md-3">
+			<div class="container">
+				<a th:href="@{/admin}" class="navbar-brand fst-italic"><img class="mx-3" src="/img/logo_mitad.png"
+						height="50" width="60"></img>Julio Cesar Artesanías</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<div class="mx-auto"></div>
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link mx-4"
+								th:classappend="${#httpServletRequest.getRequestURI() == '/admin' ? 'active':''}"
+								th:href="@{/admin}">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link mx-4"
+								th:classappend="${#httpServletRequest.getRequestURI() == '/admin/listarProducto' ? 'active':''}"
+								th:href="@{/admin/listarProducto}">Productos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link mx-4"
+								th:classappend="${#httpServletRequest.getRequestURI() == '/admin/listarArtesano' ? 'active':''}"
+								th:href="@{/admin/listarArtesano}">Artesanos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link mx-4"
+								th:classappend="${#httpServletRequest.getRequestURI() == '/admin/listarUsuario' ? 'active':''}"
+								th:href="@{/admin/listarUsuario}">Usuario</a>
+						</li>
+					</ul>
+					<form class="mx-4" th:action="@{/logout}" method="post">
+						<button type="submit" class="btn btn-outline-danger"><i class="bi bi-power"></i></button>
+					</form>
+				</div>
+			</div>
+		</nav>
+
+		<div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
+		<div class="alert alert-danger" th:if="${error != null}" th:text="${error}"></div>
+		<div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}"></div>
+		<div class="alert alert-info" th:if="${info != null}" th:text="${info}"></div>
+
+	</header>
+
+	<!-- Buscador -->
+	<form th:fragment="buscador" th:action="@{'/admin/'+${accion}+'/busqueda'}">
+		<div class="row col-md-4">
+			<div class="col-12 mb-4">
+				<div class="input-group">
+					<div class="form-outline flex-fill">
+						<input type="search" placeholder="Buscar" name="query"
+							class="form-control form-control" />
+					</div>
+					<button type="submit" class="btn btn-secondary">
+						<i class="bi bi-search"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</form>
+	<!-- Buscador -->
+
+
+	<!-- Footer -->
+	<footer class="text-white text-center text-lg-start bg-dark mt-5" th:fragment="footer">
+		<!-- Grid container -->
+		<div class="container p-4">
+			<!--Grid row-->
+			<div class="row mt-4">
+				<!--Grid column-->
+				<div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+					<h5 class="text-uppercase mb-4">Sobre nosotros</h5>
+
+					<p>
+						Artesanías Curi-tí nació en el 2004 gracias a que durante un tiempo algunas artesanías traidas
+						de Raquira Boyaca y fueron una fuente de sustento.
+					</p>
+
+					<p>
+						Después de ese tiempo se decidió traer artesanías de diferentes partes del país y se empezaró a
+						confeccionar algunas líneas de productos propios.
+					</p>
+				</div>
+				<!--Grid column-->
+
+				<!--Grid column-->
+				<div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+					<ul class="fa-ul" style="margin-left: 1.65em;">
+						<li class="mb-3">
+							<span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Curi-tí</span>
+						</li>
+						<li class="mb-3">
+							<span class="fa-li"><i class="fas fa-envelope"></i></span><span
+								class="ms-2">juliocesarartesanias@gmail.com</span>
+						</li>
+						<li class="mb-3">
+							<span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 57 3164857339</span>
+						</li>
+					</ul>
+				</div>
+				<!--Grid column-->
+
+				<!--Grid column-->
+				<div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+					<h5 class="text-uppercase mb-4">HORARIO DE ATENCIÓN</h5>
+
+					<table class="table text-center text-white">
+						<tbody class="fw-normal">
+							<tr>
+								<td>Lunes - Viernes:</td>
+								<td>8am - 6pm</td>
+							</tr>
+							<tr>
+								<td>Sábados - Domingos:</td>
+								<td>8am - 3pm</td>
+							</tr>
+							<tr>
+								<td>Festivos:</td>
+								<td>8am - 12m</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!--Grid column-->
+			</div>
+			<!--Grid row-->
+		</div>
+		<!-- Grid container -->
+
+		<!-- Copyright -->
+		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2022 Copyright:
+			<span class="text-white">Julio Cesar Artesanias</span>
+		</div>
+		<!-- Copyright -->
+	</footer>
+
+	<!-- Fin footer -->
+
+	<div th:fragment="scripts">
+		<script type='text/javascript'
+			src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js"
+			integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+			crossorigin="anonymous"></script>
+		<script th:src="@{/js/search.js}"></script>
+	</div>
+</body>
+
+</html>

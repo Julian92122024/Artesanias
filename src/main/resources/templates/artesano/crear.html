@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layoutAdmin :: head"></head>
+
+<body>
+	<header th:replace="layout/layoutAdmin :: header"></header>
+
+	<div class="container p-5 col-lg-6 col-sm-10">
+
+		<div class="card border border-dark">
+			<div class="card-header bg-dark fw-bold text-white" th:text=${titulo}></div>
+			<div class="card-body text-dark">
+				<div th:object="${artesano}" th:remove="tag">
+					<ul th:if="${#fields.hasErrors('*')}"
+						class="list-group col col-sm-9 col-lg-8 col-md-7 col-xl-6 mx-auto text-center mb-4">
+						<span class="badge bg-danger p-2"><i class="bi bi-exclamation-triangle-fill"
+								style="font-size: 20px;"></i></span>
+						<li class="list-group-item list-group-item-danger text-center"
+							th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+					</ul>
+				</div>
+				<form class="row g-3" th:action="@{/admin/crearArtesano}" th:object="${artesano}" method="post"
+					enctype="multipart/form-data">
+					<div class="row g-3">
+						<div class="col-sm-5">
+							<label class="form-label">Nombre <span th:if="${#fields.hasErrors('nombre')}"
+									class="badge bg-danger rounded-circle"><i
+										class="bi bi-exclamation-lg"></i></span></label>
+							<input type="text" th:field="*{nombre}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+						</div>
+						<div class="col-sm-5">
+							<label class="form-label">Aplleido</label>
+							<input type="text" th:field="*{apellido}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+						</div>
+						<div class="col-sm-2">
+							<label class="form-label">Telefono</label>
+							<input type="text" th:field="*{telefono}" class="form-control"
+								th:errorclass="'form-control alert-danger'">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label class="form-label">Email</label>
+						<input type="text" placeholder="@ejemplo.com" th:field="*{email}" class="form-control"
+							th:errorclass="'form-control alert-danger'">
+					</div>
+					<div class="col-md-6">
+						<label class="form-label">Foto</label>
+						<input accept="image/*" type="file" name="file" class="form-control" />
+					</div>
+					<div class="col-12">
+						<div class="form-group text-right ml-5">
+							<div class="d-grid gap-2 p-4">
+								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+									<button type="submit" class="btn btn-secondary"><span
+											class="mt-2 material-icons-outlined">task_alt</span></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layoutAdmin :: footer"></footer>
+	<div th:replace="layout/layout :: scripts"></div>
+</body>
+
+</html>

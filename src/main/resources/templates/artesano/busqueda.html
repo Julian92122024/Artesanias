@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div class="container py-4">
+
+		<form th:replace="layout/layout :: buscadorArtesano"></form>
+
+
+		<div class="mt-3" th:unless="${artesanos.size}">
+			<h2 th:text="${vacio}"></h2>
+			<small class="text-muted" th:text="${vacioInfo}"></small>
+		</div>
+
+		<div class="mt-3" th:if="${artesanos.size}">
+			<h2 th:text="${resultados}"></h2>
+			<div class="album bg-light">
+				<div class="container">
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+							<div class="col-lg-3 mt-5 mx-5 border" th:each="artesano: ${artesanos}">
+
+								<h4 class="text-center">
+									<img th:if="${artesano.foto != null}" th:src="@{'/uploads/' + ${artesano.foto}}"
+										th:alt="${artesano.foto}"
+										class="bd-placeholder-img rounded-circle border border-dark mt-2" width="140"
+										height="140">
+								</h4>
+								<h2 class="text-break" th:text="${artesano.nombre}+' '+${artesano.apellido}"></h2>
+								<p class="text-break" th:text="${artesano.email}"></p>
+								<p class="text-break" th:text="${artesano.telefono}"></p> 
+							</div><!-- /.col-lg-4 -->
+						
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<a th:href="@{/quienesSomos}" class="btn btn-secondary btn-xs mt-4"><i
+				class="bi bi-caret-left-fill"></i>Volver</a>
+
+
+
+	</div>
+
+	<div th:if="${artesanos.size}">
+		<footer th:replace="layout/layout :: footer"></footer>
+	</div>
+
+	<div th:replace="layout/layout :: goup"></div>
+	<div th:replace="layout/layout :: scripts"></div>
+</body>
+
+</html>

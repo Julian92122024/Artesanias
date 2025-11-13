@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layoutAdmin :: head"></head>
+
+<body>
+	<header th:replace="layout/layoutAdmin :: header"></header>
+
+	<div class="container p-5 col-lg-6 col-sm-10">
+
+		<div class="card border border-dark">
+			<div class="card-header bg-dark fw-bold text-white" th:text=${titulo}></div>
+			<div class="card-body">
+
+				<div th:object="${producto}" th:remove="tag">
+					<ul th:if="${#fields.hasErrors('*')}"
+						class="list-group col col-sm-9 col-lg-8 col-md-7 col-xl-6 mx-auto text-center mb-4">
+						<span class="badge bg-danger p-2"><i class="bi bi-exclamation-triangle-fill"
+								style="font-size: 20px;"></i></span>
+						<li class="list-group-item list-group-item-danger" th:each="err: ${#fields.errors('nombre')}"
+							th:text="${err}">
+						</li>
+						<li class="list-group-item list-group-item-danger"
+							th:each="err: ${#fields.errors('descripcion')}" th:text="${err}"></li>
+						<li class="list-group-item list-group-item-danger" th:each="err: ${#fields.errors('precio')}">El
+							precio del producto es obligatorio</li>
+					</ul>
+				</div>
+
+				<form class="row g-3" th:action="@{/admin/crearProducto}" th:object="${producto}" method="post"
+					enctype="multipart/form-data">
+					<div class="col-md-9">
+						<label class="form-label">Nombre <span th:if="${#fields.hasErrors('nombre')}"
+								class="badge bg-danger rounded-circle"><i
+									class="bi bi-exclamation-lg"></i></span></label>
+						<input type="text" th:field="*{nombre}" class="form-control"
+							th:errorclass="'form-control alert-danger'" />
+					</div>
+					<div class="col-md-3">
+						<label class="form-label">Precio <span
+								th:if="${#fields.hasErrors('precio')}" class="badge bg-danger rounded-circle"><i
+									class="bi bi-exclamation-lg"></i></span></label>
+						<input type="text" placeholder="$" th:field="*{precio}" class="form-control"
+							th:errorclass="'form-control alert-danger'" />
+					</div>
+					<div class="col-12">
+						<label class="form-label">Descripción <span
+								th:if="${#fields.hasErrors('descripcion')}" class="badge bg-danger rounded-circle"><i
+									class="bi bi-exclamation-lg"></i></span></label>
+						<textarea rows="4" cols="50" placeholder="Ingrese una descripción para el producto..." th:field="*{descripcion}" class="form-control"
+							th:errorclass="'form-control alert-danger'"></textarea>
+					</div>
+					<div class="col-md-6">
+						<label for="file" class="col-form-label">Foto</label>
+							<input accept="image/*" type="file" name="file" class="form-control" />
+					</div>
+
+					<div class="col-12">
+						<div class="form-group text-right ml-5">
+							<div class="d-grid gap-2 p-4">
+							<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+								<button type="submit" class="btn btn-secondary"><span
+										class="mt-2 material-icons-outlined">task_alt</span></button>
+							</div>
+							</div>
+						</div>
+					</div>
+				</form>
+
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<footer th:replace="layout/layoutAdmin :: footer"></footer>
+	<div th:replace="layout/layout :: scripts"></div>
+</body>
+
+</html>

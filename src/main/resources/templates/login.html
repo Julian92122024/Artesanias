@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<br>
+	<br>
+	<br>
+	<section class="h-100 gradient-form" style="background-color: #eee;">
+		<div class="container py-5 h-100">
+			<div class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col-xl-10">
+					<div class="card rounded-3 text-black" style="border-image: linear-gradient( #CD2428 0%, #00873A 70%, #FFD113 30%) 1;">
+						<div class="row g-0">
+							<div class="col-lg-6">
+								<div class="card-body p-md-5 mx-md-4">
+
+									<div class="text-center">
+										<img class="mx-3" src="/img/logo.png" height="100" width="150"
+											alt="logo"></img>
+											<h4 class="mt-1 mb-5"></h4>
+									</div>
+
+									<form id="loginform" method="post" th:action="@{/admin/login-post}">
+										<p>Inicio de Sesión del Administrador</p>
+
+										<div class="form-outline mb-4">
+											<input type="text" name="username" class="form-control"
+												placeholder="Usuario" />
+										</div>
+
+										<div class="form-outline mb-4">
+											<input type="password" name="password" class="form-control" placeholder="Password" />
+										</div>
+
+										<div class="text-center pt-1 mb-5 pb-1">
+											<button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+												type="submit">Acceso</button>
+										</div>
+
+										<div th:if="${param.error}" class="d-flex align-items-center justify-content-center pb-4 alert alert-danger mb-3">
+											Credenciasles Incorrectas
+										</div>
+										
+										<div th:if="${param.logout}" class="d-flex align-items-center justify-content-center pb-4 alert alert-success mb-3">
+											Cierre de Sesión Satisfactorio
+										</div>
+
+									</form>
+
+								</div>
+							</div>
+							<div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+							<a class="text-center mb-4" href='https://www.freepik.es/vectores/poblacion'>
+								<img src="/img/Login.jpg"
+									class="img-fluid" alt="Sample image">Vector de población creado por freepik - www.freepik.es</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<footer th:replace="layout/layout :: footer"></footer>
+
+	<div th:replace="layout/layout :: scripts"></div>
+</body>
+
+</html>

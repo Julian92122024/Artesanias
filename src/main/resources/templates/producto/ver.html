@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layoutAdmin :: head"></head>
+
+<body>
+	<header th:replace="layout/layoutAdmin :: header"></header>
+
+	<div class="container p-5 col-7">
+
+		<div class="card bg-light">
+			<div class="card-header fst-italic alert alert-warning" th:text="${titulo}"></div>
+			<div class="row g-0">
+				<div class="col-md-4">
+					<img th:if="${producto.foto != null}" class="img-fluid rounded-circle p-3"
+						style="width: 100%; height: 350px;" th:src="@{'/uploads/' + ${producto.foto}}"
+						th:alt="${producto.foto}" />
+					<br />
+				</div>
+				<div class="col-md-8">
+					<div class="card-body">
+						<ul class="list-group mt-5">
+							<li class="list-group-item text-break fst-italic">Nombre: <span class="text-muted" th:text="${producto.nombre}"></span></li>
+							<li class="list-group-item text-break">Descripción: <span class="text-muted" th:text="${producto.descripcion}"></span></li>
+							<li class="list-group-item text-break">Precio: <span class="text-muted" th:text="${producto.precio}+' $'"></span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layoutAdmin :: footer"></footer>
+	<div th:replace="layout/layout :: scripts"></div>
+</body>
+
+</html>

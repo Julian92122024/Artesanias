@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head">
+
+</head>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="overflow-hidden">
+		<div class="container-fluid col-xxl-8">
+			<div class="row flex-lg-nowrap align-items-center g-5">
+				<div class="order-lg-1 w-100">
+					<img style="clip-path: polygon(25% 0%, 100% 0%, 100% 99%, 0% 100%);" src="/img/Ar2Big.png"
+						class="d-block mx-lg-auto" alt="Photo by Milad Fakurian" loading="lazy" srcset="/img/Ar2Big.png"
+						sizes="(max-width: 1080px) 100vw, 1080px" width="100%" height="850">
+				</div>
+				<div class="col-lg-6 col-xl-5 text-center text-lg-start pt-lg-5 mt-xl-4">
+					<div class="lc-block mb-4">
+						<div editable="rich">
+							<h1 class="fw-bold display-3">JULIO CESAR ARTESANÍAS</h1>
+						</div>
+					</div>
+
+					<div class="lc-block mb-5">
+						<div editable="rich">
+							<p class="rfs-8"> Artesanías de cada rincón de Colombia y el exterior.</p>
+						</div>
+					</div>
+
+					<div class="lc-block mb-6"><a class="btn btn-primary px-4 me-md-2 btn-lg" th:href="@{/quienesSomos}"
+							role="button">Conócenos!</a>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+		<div class="col-md-5 p-lg-5 mx-auto my-5">
+			<h1 class="display-4 fw-normal fw-bold fst-italic">Julio Cesar ArtesanÍas</h1>
+		</div>
+	</div>
+
+
+	<div class="container col col-md-8">
+
+		<div class="card">
+			<div class="row g-0">
+				<div class="col-md-4">
+					<a class="text-center mb-4" th:href=@{/artesanias}>
+						<img src="/img/Ar4Big.png" class="rounded-start" alt="..." style="width: 100%; height: 400px;">
+					</a>
+				</div>
+				<div class="col-md-8">
+					<div class="card-body">
+						<h5 class="card-title">ARTESANÍAS</h5>
+						<p class="card-text">Conozca todos nuestros productos, los cuales se encuentran a su disposición
+							en nuestra sede presencial
+							en curití. Artesanias creadas con la mayor calidad del mervado, hechas 100% por artesanos
+							Colombianos garantizando así,
+							la mejor artesanía posible para nuestros clientes.</p>
+						<p class="card-text"><small class="text-muted">Tenemos lo que estabas buscando!</small></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card mt-4">
+			<div class="row g-0">
+				<div class="col-md-8">
+					<div class="card-body">
+						<h5 class="card-title">ARTESANOS</h5>
+						<p class="card-text">En Julio Cesar Artesanías contamos con una gran variedad de artesanos, la
+							mayoría originarios de
+							Santander y Norte de Santander. Cada uno de ellos es espacializado en el arte de crear
+							artesanías a de la mejor calidad.</p>
+						<p class="card-text"><small class="text-muted">Conocenos!</small></p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<a class="text-center mb-4" th:href=@{/quienesSomos}>
+						<img src="/img/artesanos.jpg" class="img-fluid rounded-start" alt="..." style="width: 100%; height: 400px;">
+					</a>
+					<a href="https://www.freepik.es/vectores/ciudadanos">Vector de ciudadanos creado por pikisuperstar - www.freepik.es</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div th:replace="layout/layout :: goup"></div>
+	<footer th:replace="layout/layout :: footer"></footer>
+
+	<div th:replace="layout/layout :: scripts"></div>
+
+</body>
+
+</html>

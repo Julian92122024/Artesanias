@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<section class="py-5 text-center container">
+		<div class="row py-lg-5">
+			<div class="col-lg-10 col-md-8 mx-auto">
+				<h1 class="display-4 fw-bold fst-italic">NOSOTROS</h1>
+				<br>
+				<p class="lead text-muted">En Julio Cesar Artesanías contamos con una gran variedad de artesanos, la
+					mayoría originarios de Santander y Norte de Santander. Cada uno de ellos es espacializado en el arte
+					de crear artesanías a de la mejor calidad.</p>
+			</div>
+			<p class="lead text-muted col-lg-10 col-md-8 mx-auto">
+
+			</p>
+
+		</div>
+	</section>
+
+	<main>
+		<hr class="featurette-divider mb-5">
+
+		<div class="container marketing">
+			<div class="row justify-content-center">
+
+				<form th:replace="layout/layout :: buscadorArtesano"></form>
+				<br>
+				<div class="row featurette border mt-4 mb-4 p-4 col-lg-6" th:each="artesano: ${artesanos}">
+
+					<div class="col-md-6">
+						<h2 class="featurette-heading text-break" th:text="${artesano.nombre}+' '+${artesano.apellido}">
+						</h2>
+						<i class="bi bi-envelope">&nbsp;</i><span class="lead text-break"
+							th:text="${artesano.email}"></span>
+						<br>
+						<i class="bi bi-telephone">&nbsp;</i><span class="lead text-break"
+							th:text="${artesano.telefono}"></span>
+					</div>
+					<div class="col-md-3">
+						<img th:if="${artesano.foto != null}" th:src="@{'/uploads/' + ${artesano.foto}}"
+							th:alt="${artesano.foto}"
+							class="bd-placeholder-img bd-placeholder-img-lg featurette-image mx-auto d-flex flex-row-reverse bd-highlight"
+							width="250" height="250">
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<nav th:replace="paginator-nav :: paginator"></nav>
+
+	</main>
+
+
+	<div th:replace="layout/layout :: goup"></div>
+	<div th:replace="layout/layout :: footer"></div>
+	<div th:replace="layout/layout :: scripts"></div>
+</body>
+
+</html>

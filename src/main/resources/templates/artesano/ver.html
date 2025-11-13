@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layoutAdmin :: head"></head>
+
+<body>
+	<header th:replace="layout/layoutAdmin :: header"></header>
+
+	<div class="container p-5 col-7">
+
+		
+		
+		
+		
+		
+				<div class="card bg-light">
+			<div class="card-header fst-italic alert alert-warning" th:text="${titulo}"></div>
+			<div class="row g-0">
+				<div class="col-md-4">
+					<img th:if="${artesano.foto != null}" class="img-fluid rounded-circle p-3"
+						style="width: 100%; height: 350px;" th:src="@{'/uploads/' + ${artesano.foto}}"
+						th:alt="${artesano.foto}" />
+					<br />
+				</div>
+				<div class="col-md-8">
+					<div class="card-body">
+						<ul class="list-group mt-5">
+							<li class="list-group-item text-break fst-italic">Nombre: <span class="text-muted" th:text="${artesano.nombre}"></span><span class="text-muted" th:text="' '+${artesano.apellido}"></span></li>
+							<li class="list-group-item text-break">Telefono: <span class="text-muted" th:text="${artesano.telefono}"></span></li>
+							<li class="list-group-item text-break">Email: <span class="text-muted" th:text="${artesano.email}"></span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+		
+		
+		
+	</div>
+
+	<footer th:replace="layout/layoutAdmin :: footer"></footer>
+	<div th:replace="layout/layout :: scripts"></div>
+</body>
+
+</html>
